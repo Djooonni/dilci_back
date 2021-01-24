@@ -1,0 +1,21 @@
+{
+  "GONDER": "GÖNDƏR",
+  "LANGUAGE": "Azərbaycan dilinin morfoloji və sintaktik təhlili",
+  "ANA_SEHIFE": "ANA SƏHİFƏ",
+  "KOMANDA": "KOMANDA",
+  "KOMANDA_INFO": "Biz ADA Universitetini bitirmiş bir qrup tələbə olaraq bu proyekti daha da təkminləşdirmək üçün yeniliklər əlavə edirik. Hal hazırda proqramın bir hissəsi işləyir və əməliyyatları doğru yerinə yetirir. Əməliyyat aşağıda qeyd olunanlardır.",
+  "LEMMATIZATION": "Mətnin lemmalaşdırılması",
+  "MORPHOLOGY": "Morfoloji təhlil",
+  "GENERATE": "Sözlərin generasiyası",
+  "LUGET": "Lüğət",
+  "METN": "Mətni daxil edin",
+  "SOZ_ANALIZ": "Sözün analizi",
+  "SOZ": "Sözü daxil edin",
+  "SOZ_BASLANGIC": "Sözün başlanğıc formasını daxil edin",
+  "NITQ": "Nitq",
+  "REQUIRED": {
+    "METN": "Mətni daxil edin",
+    "LUGET": "Lüğətdən sözü daxil edin",
+    "SOZ": "Sözü daxil edin"
+  }
+}
