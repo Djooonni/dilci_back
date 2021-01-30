@@ -11,7 +11,7 @@ from .forms import NameForm, TextForm, SozForm, SignUpForm, UserLoginForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .models import gps_data, sayqac_data
+from .models import initiators,missing,generations,dictionary,parts_of_speach#gps_data, sayqac_data
 
 from django.utils import timezone
 
@@ -133,6 +133,58 @@ def stem_metn(request):
 
 # done
 
+convert={
+    hal2:'hal',
+hal3:'hal',
+hal4:'hal',
+hal5:'hal',
+hal6:'hal',
+mens1:'mensubiyyet',
+mens2:'mensubiyyet',
+mens3:'mensubiyyet',
+mens4:'mensubiyyet',
+mens5:'mensubiyyet',
+sex1:'sexs',
+sex2:'sexs',
+sex3:'sexs',
+sex4:'sexs',
+sex5:'sexs',
+sex6:'sexs',
+cem:'cem',
+in_zaman:'zaman',
+s_k_zaman:'zaman',
+n_k_zaman1:'zaman',
+n_k_zaman:'zaman',
+q_q_zaman:'zaman',
+qq_q_zaman:'zaman',
+inkar:"inkar",
+t_eden:"tesirlik",
+t_eden1:"tesirlik",
+t_eden2:"tesirlik",
+t_eden3:"tesirlik",
+qaydis:'nov',
+qaydis1:'nov',
+mechul:'nov',
+mechul1:'nov',
+qar_birge:'nov',
+icbar:'nov',
+idi_h:"hissecik",
+imis_h:"hissecik",
+sual_h:"hissecik",
+ise_h:"hissecik",
+e_s_1t:"sekil",
+e_s_3t:"sekil",
+e_s_1c:"sekil",
+e_s_2c:"sekil",
+e_s_3c:"sekil",
+a_s:"sekil",
+v_s:"sekil",
+l_s:"sekil",
+s_s:"sekil",
+d_s:"sekil",
+i_la:'hissecik',
+i_daki:'hissecik'}
+
 
 def soz_analiz(request):
     body_unicode = request.body.decode('utf-8')
@@ -149,22 +201,42 @@ def soz_analiz(request):
     cumle_class = TextForm
     morf_class = SozForm
     '''
+    if(generations.objects.filter(word=content_soz,initiated_by=initiators.objects.get(initiator='user'), p_id=parts_of_speach.objects.get(part_of_speach=content_nitq)).count()==0):
+        p = generations(word=content_soz,initiated_by=initiators.objects.get(initiator='user'), p_id=parts_of_speach.objects.get(part_of_speach=content_nitq),times=1)
+        p.save()
+    else:
+        p = generations.objects.get(word=content_soz,initiated_by=initiators.objects.get(initiator='user'), p_id=parts_of_speach.objects.get(part_of_speach=content_nitq))
+        p.times+=1
+        p.save()
 
     k = sz(content_soz)  # request.POST.get('soz', ''))
     k.nitq(content_nitq)  # request.POST.get('nitq', ''))
     z = []
     res = {'original_word': k.ozu}
+    i_id=0
     for a in k.yarat():
+        i_id+=1
+        t_cvb={}
+        t_cvb["soz"]=a.ozu
+        temp=''
         for aa in a.shekilciler:
-            if(a.ozu in res.keys()):
+            temp+=aa.adi+' '
+            t_cvb[convert[aa.adi]]=aa.secilmis
+            #t_cvb['ozu']=aa.secilmis
+
+        t_cvb['izah']=temp
+        res[i_id]=t_cvb
+
+        '''
+            if(i_id in res.keys()):
                 # res[a.ozu].append([aa.secilmis, aa.adi])
-                res[a.ozu].append( aa.adi)
+                res[i_id].append( aa.adi)
 
             else:
-                res[a.ozu] = []
+                res[i_id] = [a.ozu]
                 # res[a.ozu].append([aa.secilmis, aa.adi])
-                res[a.ozu].append( aa.adi)
-
+                res[i_id].append( aa.adi)
+        '''
         # z.append(a.ozu)
         # print(a)
         #form = soz_class(data=request.POST)
