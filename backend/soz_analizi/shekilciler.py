@@ -7,7 +7,7 @@ from soz_analizi.sekilci.n_sifet import *
 from soz_analizi.sekilci.n_say import *
 from soz_analizi.sekilci.n_evezlik import *
 from soz_analizi.sekilci.n_zerf import *
-sait=['a', 'ı', 'o', 'u','e', 'ə' , 'i', 'ö', 'ü']
+sait=['a', 'ı', 'o', 'u','e', 'ə' , 'i', 'ö', 'ü','A', 'I', 'O', 'U','E', 'Ə' , 'İ', 'Ö', 'Ü']
 istisna=['tale', 'mənbə', 'mövqe', 'mənşə', 'nə', 'mənafe']
 istisna1=['isim', 'qisim', 'nəsil', 'fikir', 'ətir', 'səbir', 'qəbir','heyif','sətir','qədir','ömür', 'sinif',
  'eyib', 'şəkil', 'meyil', 'əsil', 'fəsil', 'xeyir', 'zehin']

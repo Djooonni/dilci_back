@@ -116,6 +116,19 @@ def metn_oxu(metn):
             continue
         cv+=baslangic(ak,'u')+' '
     return cv
+
+def metn_hecala(metn):
+    luget=bol(metn)
+    cv=''
+    for ak in luget:
+        if(ak=='\n'):
+            continue
+        if(yuxari(ak)[0] in 'QÜERTYUİOPÖĞASDFGHJKLIƏZXCVBNMÇŞ'):
+            cv+=sz(ak).hecaya_bol()+' '
+        else:
+            cv+=ak+' '
+    return cv
+
 def statistika(metn):
     total=0
     dict={}

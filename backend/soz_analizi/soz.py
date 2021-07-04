@@ -64,7 +64,8 @@ class sz:
         for i in range(0,len(self.ozu)):
             if self.ozu[i] in sait:
                 self.saitler.append(i)
-
+        if(len(self.saitler)<1):
+            return self.ozu
         self.hecalar.append(self.ozu[:self.saitler[0]+1])
         for i in range(1,len(self.saitler)):
             self.hecalar.append(self.ozu[self.saitler[i-1]+1:self.saitler[i]+1] )
